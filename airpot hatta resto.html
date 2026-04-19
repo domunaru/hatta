@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pondok Makan Berkah - Soekarno-Hatta Airport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D4A574;
+            --primary-dark: #B8956A;
+            --secondary: #2C1810;
+            --accent: #E8B87D;
+            --light: #FDF8F3;
+            --dark: #1A0F0A;
+            --text: #3D2914;
+            --text-light: #6B4423;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(212,165,116,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 100px;
+            opacity: 0.5;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-50px) rotate(360deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 165, 116, 0.2);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            display: block;
+            font-size: 2.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 5%;
+            background: white;
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 6rem 5%;
+            background: var(--light);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .menu-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .menu-card-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/></svg>');
+            background-size: 80px;
+            opacity: 0.5;
+        }
+
+        .menu-card-image span {
+            font-size: 4rem;
+            z-index: 2;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--secondary);
+        }
+
+        .menu-card .price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .menu-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .menu-tag {
+            display: inline-block;
+            background: var(--light);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Special Section for Es Teh */
+        .special-highlight {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            padding: 4rem;
+            border-radius: 30px;
+            margin: 4rem auto;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 165, 116, 0.1);
+            border-radius: 50%;
+        }
+
+        .special-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .special-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .special-image {
+            text-align: center;
+            font-size: 8rem;
+            position: relative;
+            z-index: 2;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Location Section */
+        .location {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .location-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .location-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .location-item:hover {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateX(10px);
+        }
+
+        .location-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .location-item h4 {
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .location-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--text-light);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .map-placeholder span {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero h1 span {
+                font-size: 1.8rem;
+            }
+
+            .about-container,
+            .location-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image::before {
+                display: none;
+            }
+
+            .special-highlight {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <span>★</span> Pondok Makan Berkah
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#location">Lokasi</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <a href="#menu" class="nav-cta">Lihat Menu</a>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">✈️ Restoran di Bandara Soekarno-Hatta</div>
+            <h1>
+                PONDOK MAKAN BERKAH
+                <span>The Happy Place</span>
+            </h1>
+            <p class="hero-subtitle">Nikmati hidangan khas Indonesia autentik dengan cita rasa rumahan yang menggugah selera. Tempat berkumpul yang penuh berkah untuk setiap perjalanan Anda.</p>
+            <div class="hero-location">
+                <span>📍</span> Terminal 3, Bandara Soekarno-Hatta
+            </div>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn-primary">
+                    🍽️ Jelajahi Menu
+                </a>
+                <a href="#location" class="btn-secondary">
+                    📍 Temukan Kami
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop" alt="Interior Restoran">
+            </div>
+            <div class="about-content">
+                <h2>Cita Rasa Rumahan di Jantung Bandara</h2>
+                <p>Pondok Makan Berkah hadir sebagai oase kuliner bagi para traveler yang rindu masakan rumah. Kami menyajikan berbagai hidangan khas Indonesia yang dibuat dengan resep turun-temurun dan bahan-bahan segar pilihan.</p>
+                <p>Dari Cireng yang renyah hingga Semur Sapi yang empuk, setiap hidangan kami buat dengan penuh ketulusan dan cinta—seperti masakan ibu di rumah.</p>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🥘</div>
+                        <div>
+                            <h4>Masakan Autentik</h4>
+                            <p>Resep tradisional asli</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⏰</div>
+                        <div>
+                            <h4>Buka 24 Jam</h4>
+                            <p>Siap melayani kapan saja</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">✈️</div>
+                        <div>
+                            <h4>Lokasi Strategis</h4>
+                            <p>Di dalam area bandara</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <div>
+                            <h4>Harga Terjangkau</h4>
+                            <p>Kualitas premium, harga bersahabat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="section-header">
+            <h2>Menu Kami</h2>
+            <p>Pilihan hidangan lezat yang tersedia di Pondok Makan Berkah. Dari camilan ringan hingga hidangan berat yang mengenyangkan.</p>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Makanan Ringan -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🥟</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Cireng</h3>
+                        <span class="price">Rp 15.000</span>
+                    </div>
+                    <p>Aci goreng khas Sunda yang renyah di luar dan kenyal di dalam. Disajikan dengan sambal rujak yang pedas manis.</p>
+                    <span class="menu-tag">🌟 Best Seller</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🧈</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Tahu Petis</h3>
+                        <span class="price">Rp 18.000</span>
+                    </div>
+                    <p>Tahu goreng krispi dengan siraman petis udang khas Jawa Timur yang gurih dan manis.</p>
+                    <span class="menu-tag">🥜 Favorite</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍟</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Singkong Goreng</h3>
+                        <span class="price">Rp 12.000</span>
+                    </div>
+                    <p>Singkong rebus yang digoreng hingga keemasan, renyah di luar dan lembut di dalam. Camilan sempurna kapan saja.</p>
+                    <span class="menu-tag">🌿 Vegetarian</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🫔</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Tahu Isi</h3>
+                        <span class="price">Rp 15.000</span>
+                    </div>
+                    <p>Tahu pong yang diisi dengan sayuran segar dan digoreng hingga krispi. Nikmat dengan saus sambal atau cabai rawit.</p>
+                    <span class="menu-tag">🥬 Sayuran</span>
+                </div>
+            </div>
+
+            <!-- Hidangan Berat -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍜</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Mie Goreng</h3>
+                        <span class="price">Rp 35.000</span>
+                    </div>
+                    <p>Mie goreng Jawa dengan bumbu kecap yang meresap, dilengkapi ayam suwir, sayuran segar, dan kerupuk.</p>
+                    <span class="menu-tag">🔥 Hot</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🥩</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Semur Sapi</h3>
+                        <span class="price">Rp 55.000</span>
+                    </div>
+                    <p>Daging sapi empuk yang dimasak dengan kuah kecap manis dan rempah-rempah pilihan. Cocok dinikmati dengan nasi hangat.</p>
+                    <span class="menu-tag">🍖 Daging Sapi</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍗</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Ayam Kampung Goreng</h3>
+                        <span class="price">Rp 45.000</span>
+                    </div>
+                    <p>Ayam kampung asli yang digoreng dengan bumbu lengkuas dan rempah, menghasilkan tekstur krispi dan aroma yang menggoda.</p>
+                    <span class="menu-tag">🐔 Ayam</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍖</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Iga Goreng</h3>
+                        <span class="price">Rp 60.000</span>
+                    </div>
+                    <p>Iga sapi yang dibumbui dengan rempah khas dan digoreng hingga empuk. Disajikan dengan sambal terasi yang pedas.</p>
+                    <span class="menu-tag">🥩 Premium</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🥘</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Tongseng Sapi</h3>
+                        <span class="price">Rp 50.000</span>
+                    </div>
+                    <p>Hidangan khas Solo dengan kuah santan yang kaya rempah, daging sapi empuk, dan sayuran segar.</p>
+                    <span class="menu-tag">🥥 Santan</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍲</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Sop Iga</h3>
+                        <span class="price">Rp 55.000</span>
+                    </div>
+                    <p>Sop iga sapi dengan kuah bening yang gurih, dilengkapi wortel, kentang, dan bawang goreng. Hangat dan menyehatkan.</p>
+                    <span class="menu-tag">🍲 Sop</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍜</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Soto Mie</h3>
+                        <span class="price">Rp 35.000</span>
+                    </div>
+                    <p>Soto khas Bogor dengan mie kuning, risol, dan daging sapi. Kuah bening yang segar dengan perasan jeruk nipis.</p>
+                    <span class="menu-tag">🍋 Segar</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍝</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Mie Tektek</h3>
+                        <span class="price">Rp 38.000</span>
+                    </div>
+                    <p>Mie goreng dengan tekstur kenyal yang ditumis dengan sayuran, bakso, dan bumbu spesial. Autentik Indonesia!</p>
+                    <span class="menu-tag">🍜 Mie</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍜</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Bakso Sapi</h3>
+                        <span class="price">Rp 40.000</span>
+                    </div>
+                    <p>Bakso sapi handmade dengan tekstur kenyal dan kuah kaldu sapi yang kaya rasa. Dilengkapi mie dan tahu.</p>
+                    <span class="menu-tag">🐄 Bakso</span>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <span>🍛</span>
+                </div>
+                <div class="menu-card-content">
+                    <div class="menu-card-header">
+                        <h3>Nasi Goreng</h3>
+                        <span class="price">Rp 35.000</span>
+                    </div>
+                    <p>Nasi goreng spesial dengan bumbu tradisional, telur mata sapi, ayang suwir, dan kerupuk. Klasik yang tak lekang waktu.</p>
+                    <span class="menu-tag">🍳 Best Seller</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Es Teh Special Highlight -->
+        <div class="special-highlight">
+            <div class="special-content">
+                <h3>Es Teh Segar</h3>
+                <p>Penyegar sempurna untuk menemani hidangan Anda. Teh pilihan yang diseduh dengan sempurna dan disajikan dingin dengan es batu berkualitas. Tersedia dalam varian manis atau tawar.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem 1.5rem; border-radius: 15px;">
+                        <strong>Es Teh Manis</strong><br>
+                        <span style="font-size: 1.3rem; color: var(--accent);">Rp 12.000</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 1rem 1.5rem; border-radius: 15px;">
+                        <strong>Es Teh Tawar</strong><br>
+                        <span style="font-size: 1.3rem; color: var(--accent);">Rp 10.000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="special-image">
+                🍹
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="location-container">
+            <div class="location-info">
+                <h2>Kunjungi Kami</h2>
+                <p>Berlokasi strategis di Terminal 3 Bandara Soekarno-Hatta, kami siap menyambut Anda dengan hidangan hangat dan pelayanan ramah.</p>
+                
+                <div class="location-details">
+                    <div class="location-item">
+                        <div class="location-icon">📍</div>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Terminal 3, Bandara Internasional Soekarno-Hatta, Tangerang, Banten</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <div class="location-icon">⏰</div>
+                        <div>
+                            <h4>Jam Operasional</h4>
+                            <p>Buka 24 Jam Setiap Hari</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <div class="location-icon">📞</div>
+                        <div>
+                            <h4>Reservasi & Info</h4>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <div class="location-icon">✈️</div>
+                        <div>
+                            <h4>Akses</h4>
+                            <p>Lokasi di area Keberangkatan Domestik & Internasional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="map-placeholder">
+                <span>🗺️</span>
+                <p>Peta Lokasi Terminal 3<br>Bandara Soekarno-Hatta</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Pondok Makan Berkah</h3>
+                <p>The Happy Place untuk setiap perjalanan Anda. Menyajikan kehangatan masakan rumah di tengah kesibukan bandara.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                    <a href="#">🐦</a>
+                    <a href="#">▶️</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Menu</h4>
+                <ul>
+                    <li><a href="#">Makanan Ringan</a></li>
+                    <li><a href="#">Hidangan Berat</a></li>
+                    <li><a href="#">Minuman</a></li>
+                    <li><a href="#">Paket Kombo</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Tentang</h4>
+                <ul>
+                    <li><a href="#">Sejarah Kami</a></li>
+                    <li><a href="#">Visi & Misi</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Franchise</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Bantuan</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pondok Makan Berkah. All rights reserved. | Made with ❤️ in Indonesia</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 5%';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.padding = '1rem 5%';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-card, .location-item, .feature').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
